@@ -9,6 +9,7 @@ const containerElem = document.querySelector(".container");
 const mainPageElem = document.querySelector(".main-page");
 const detailsPageElem = document.querySelector(".details-page");
 const detailsPageHeaderElem = document.querySelector(".details-page .header-title h2");
+const detailsPageMainElem = document.querySelector(".details-page main");
 const detailsPageTaskCardElem = document.querySelector(".details-page .task-list");
 const taskListsElem = document.querySelector(".task-lists");
 const fallbackMsgELem = document.querySelector(".fallback");
@@ -167,8 +168,8 @@ const renderTaskDetails = (tasklistId) => {
   const taskLists = operations.getTaskLists();
   const tasklist = taskLists.find((taskList) => taskList.id === tasklistId);
   detailsPageHeaderElem.textContent = tasklist.title;
-  detailsPageTaskCardElem.innerHTML = "";
-  detailsPageTaskCardElem.insertAdjacentHTML("afterbegin", singleTaskCardHTML(tasklist, false));
+  detailsPageMainElem.innerHTML = "";
+  detailsPageMainElem.insertAdjacentHTML("afterbegin", singleTaskCardHTML(tasklist, false));
 };
 const toggleScreenMobile = () => {
   mainPageElem.classList.toggle(hidden);
@@ -185,6 +186,7 @@ const addTaskList = (title) => {
 const addTask = (name, tasklistID) => {
   operations.addTask(name, tasklistID);
   renderUI();
+  renderTaskDetails(tasklistID);
 };
 const completeTask = (tasklistId, taskId) => {
   operations.completeTask(tasklistId, taskId);
@@ -259,7 +261,8 @@ doClick(btnBackTaskList, () => {
 });
 
 // on clicking on task details card elements
-doClick(detailsPageTaskCardElem, (e) => {
+doClick(detailsPageMainElem, (e) => {
+  console.log(e.target);
   const tasklistId = e.target.parentElement.parentElement.parentElement.dataset.tasklistId;
   modalForm.type = task;
   modalForm.taskList = tasklistId;
@@ -270,8 +273,6 @@ doClick(detailsPageTaskCardElem, (e) => {
   // if remove task-list button clicked
   if (e.target.classList.contains("bx-trash")) {
     openModal("Are you sure?", "", true);
-    //return to main display page
-    toggleScreenMobile();
   }
   // if check box is checked
   // prettier-ignore
@@ -326,6 +327,7 @@ doClick(btnModalNo, () => {
 doClick(btnModalYes, () => {
   deleteTaskList(modalForm.taskList);
   closeModal();
+  toggleScreenMobile();
 });
 
 // #endregion - DOM Events
