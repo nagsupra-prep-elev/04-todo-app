@@ -9,7 +9,6 @@ const containerElem = document.querySelector(".container");
 const mainPageElem = document.querySelector(".main-page");
 const detailsPageElem = document.querySelector(".details-page");
 const detailsPageHeaderElem = document.querySelector(".details-page .header-title h2");
-const detailsPageMainElem = document.querySelector(".details-page main");
 const detailsPageTaskCardElem = document.querySelector(".details-page .task-list");
 const taskListsElem = document.querySelector(".task-lists");
 const fallbackMsgELem = document.querySelector(".fallback");
@@ -168,8 +167,8 @@ const renderTaskDetails = (tasklistId) => {
   const taskLists = operations.getTaskLists();
   const tasklist = taskLists.find((taskList) => taskList.id === tasklistId);
   detailsPageHeaderElem.textContent = tasklist.title;
-  detailsPageMainElem.innerHTML = "";
-  detailsPageMainElem.insertAdjacentHTML("afterbegin", singleTaskCardHTML(tasklist, false));
+  detailsPageTaskCardElem.innerHTML = "";
+  detailsPageTaskCardElem.insertAdjacentHTML("afterbegin", singleTaskCardHTML(tasklist, false));
 };
 const toggleScreenMobile = () => {
   mainPageElem.classList.toggle(hidden);
