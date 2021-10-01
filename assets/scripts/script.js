@@ -336,8 +336,8 @@ doClick(btnModalYes, () => {
 // #region - extra
 ////////////////////////////////////////
 // reset with dummy data
-document.querySelector(".main-page .header-title").addEventListener("click", () => {
-  operations.dummySet();
-  renderUI();
-});
+// document.querySelector(".main-page .header-title").addEventListener("click", () => {
+//   operations.dummySet();
+//   renderUI();
+// });
 // #endregion - extra
