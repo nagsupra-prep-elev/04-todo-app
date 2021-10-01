@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <!-- #region - app container-->
+    <div class="container">
+      <!-- main page - start -->
+      <section class="main-page">
+        <!-- main page header start -->
+        <header class="header">
+          <div class="header-title">
+            <h1>tasks <span>list</span></h1>
+          </div>
+          <div class="header-actions btn" id="task-list-add-btn">
+            <i class="bx bxs-plus-circle"></i><span>add item</span>
+          </div>
+        </header>
+        <!-- main page header end -->
+        <!-- main page content start - all tasks listed -->
+        <span class="fallback no-display">No Items in the todo list</span>
+        <div class="task-lists">
+          <!-- single task start-->
+          <article class="task-list card" data-tasklist-id="task-01">
+            <section class="task-list-display">
+              <header class="task-list-display-header">
+                <h2>trip to paris</h2>
+              </header>
+            </section>
+            <section class="task-list-details">
+              <header class="task-list-details-header">
+                <h2>trip to paris</h2>
+              </header>
+              <main class="task-list-details-content">
+                <ul class="pending-tasks">
+                  <li class="single-task">
+                    <input type="checkbox" id="task-01" />
+                    <label for="task-01">Pending Task</label>
+                  </li>
+                </ul>
+                <ul class="completed-tasks">
+                  <li class="single-task">
+                    <input type="checkbox" id="task-02" checked />
+                    <label for="task-02">Completed Task</label>
+                  </li>
+                </ul>
+              </main>
+              <footer class="task-list-details-footer">
+                <i class="bx bx-trash"></i>
+                <i class="bx bxs-plus-circle"></i>
+              </footer>
+            </section>
+          </article>
+          <!-- single task end-->
+        </div>
+        <!-- main page content end - all tasks lister-->
+      </section>
+      <!-- main page - end -->
+
+      <!-- small display page - start -->
+      <section class="details-page hidden">
+        <header class="header">
+          <div class="header-actions btn" id="task-list-back-btn">
+            <i class="bx bxs-chevron-left-circle"></i>
+          </div>
+          <div class="header-title">
+            <h2>trip to paris</h2>
+          </div>
+        </header>
+        <!-- single task start-->
+        <article class="task-list card" data-task-id="task-01">
+          <section class="task-list-details">
+            <header class="task-list-details-header">
+              <h2>trip to paris</h2>
+            </header>
+            <main class="task-list-details-content">
+              <ul class="pending-tasks">
+                <li class="single-task">
+                  <input type="checkbox" id="task-01" />
+                  <label for="task-01">Pending Task</label>
+                </li>
+              </ul>
+              <ul class="completed-tasks">
+                <li class="single-task">
+                  <input type="checkbox" id="task-02" checked />
+                  <label for="task-02">Completed Task</label>
+                </li>
+              </ul>
+            </main>
+            <footer class="task-list-details-footer">
+              <i class="bx bx-trash"></i>
+              <i class="bx bxs-plus-circle"></i>
+            </footer>
+          </section>
+        </article>
+        <!-- single task end-->
+      </section>
+      <!-- small display page - end -->
+    </div>
+    <!-- #endregion - app container-->
+    <!-- #region - modal and overlay-->
+    <div class="overlay no-display"></div>
+    <div class="modal no-display">
+      <article class="modal-content">
+        <div class="modal-content-input">
+          <label for="modalinput">Add new</label>
+          <input type="text" id="modalinput" placeholder="Add new" />
+        </div>
+        <div class="modal-content-actions">
+          <button class="modal-content-btn btn-primary" id="btn-modal-add">Add</button>
+          <button class="modal-content-btn btn-danger" id="btn-modal-close">Cancel</button>
+          <button class="modal-content-btn btn-primary" id="btn-modal-no">No</button>
+
+          <button class="modal-content-btn btn-danger" id="btn-modal-yes">Yes</button>
+        </div>
+      </article>
+    </div>
+    <!-- #endregion - modal and overlay-->
+    <script type="module" src="./assets/scripts/script.js"></script>
+  </body>
+</html>
